@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZC_Emp02TP'
+define service ZUI_Emp02 {
+  expose ZC_EMP02TP as Emp;
+  expose ZC_SKILL01TP as Skill;
+  expose ZC_SKILLHISTTP as SkillHist;
+}

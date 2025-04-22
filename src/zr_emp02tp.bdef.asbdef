@@ -1,0 +1,128 @@
+unmanaged implementation in class ZBP_R_Emp02TP unique;
+strict ( 1 );
+define behavior for ZR_Emp02TP alias Emp
+implementation in class ZBP_R_Emp02TP unique
+etag master LocalLastChangedAt
+late numbering
+lock master
+authorization master ( global )
+
+{
+//  field ( readonly : update ) EID;
+  field ( readonly )
+  EID,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+
+  create;
+  update;
+  delete;
+
+  mapping for zdrap_employeetb //control zsemp02_x
+    {
+      EID                = EID;
+      Fname              = FNAME;
+      Lname              = LNAME;
+      Gender             = GENDER;
+      Dept               = DEPT;
+      Status             = STATUS;
+      Doj                = DOJ;
+      Dol                = DOL;
+      Salary             = SALARY;
+      Currency           = CURRENCY;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+  association _Skill { create; }
+}
+
+define behavior for ZR_Skill01TP alias Skill
+implementation in class ZBP_R_Skill01TP unique
+etag master LocalLastChangedAt
+late numbering
+lock dependent by _Emp
+authorization dependent by _Emp
+
+{
+//  field ( readonly : update ) EID, SID;
+  field ( readonly )
+  EID,
+  SID,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+
+  create;
+  update;
+  delete;
+
+  mapping for zdrap_employeesk control zsskill01_x
+    {
+      EID                = EID;
+      SID                = SID;
+      Sname              = SNAME;
+      Exp                = EXP;
+      Hotskill           = HOTSKILL;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+  association _Emp;
+  association _SkillHist { create; }
+}
+
+define behavior for ZR_SkillHistTP alias SkillHist
+implementation in class ZBP_R_SkillHistTP unique
+etag master LocalLastChangedAt
+late numbering
+lock dependent by _Emp
+authorization dependent by _Emp
+
+{
+//  field ( readonly : update ) EID, SID, ShID;
+  field ( readonly )
+  EID,
+  SID,
+  Shid,
+  LocalCreatedBy,
+  LocalCreatedAt,
+  LocalLastChangedBy,
+  LocalLastChangedAt,
+  LastChangedAt;
+
+
+  create;
+  update;
+  delete;
+
+  mapping for zdrap_employeesh control zsskillhist_x
+    {
+      SID                = SID;
+      ShID               = SHID;
+      EID                = EID;
+      Projname           = PROJNAME;
+      Projyear           = PROJYEAR;
+      LocalCreatedBy     = LOCAL_CREATED_BY;
+      LocalCreatedAt     = LOCAL_CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+    }
+
+  association _Skill;
+  association _Emp;
+}

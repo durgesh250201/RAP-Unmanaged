@@ -1,0 +1,146 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Skill',
+    typeNamePlural: 'Employee Skill Information',
+    title: {
+      type: #STANDARD,
+      label: 'Employee Skill Information',
+      value: 'SID'
+    }
+  },
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'SID',
+      direction: #DESC
+    } ],
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZC_Skill01TP with
+{
+  @UI.facet: [ {
+    id: 'idSkill',
+    purpose: #STANDARD,
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'Employee Skill',
+    position: 10
+  },
+  {
+    id: 'idSkillHist',
+    type: #LINEITEM_REFERENCE,
+    label: 'Employee Skill History',
+    position: 20 ,
+    targetElement: '_SkillHist'
+  } ]
+  @UI.lineItem: [ {
+    label:'Employee ID',
+    position: 10 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Employee ID',
+    position: 10
+  } ]
+  EID;
+
+  @UI.lineItem: [ {
+    label:'Service ID',
+    position: 20 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Service ID',
+    position: 20
+  } ]
+  SID;
+
+  @UI.lineItem: [ {
+    label:'Service Name',
+    position: 30 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Service Name',
+    position: 30
+  } ]
+  Sname;
+
+  @UI.lineItem: [ {
+    label:'Experience',
+    position: 40 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Experience',
+    position: 40
+  } ]
+  Exp;
+
+  @UI.lineItem: [ {
+    label:'Skills',
+    position: 50 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Skills',
+    position: 50
+  } ]
+  Hotskill;
+  
+  @UI.hidden: true
+  LocalCreatedBy;
+  
+  @UI.hidden: true
+  LocalCreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+
+/*  @UI.lineItem: [ {
+    position: 60 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 60
+  } ]
+  LocalCreatedBy;
+
+  @UI.lineItem: [ {
+    position: 70 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 70
+  } ]
+  LocalCreatedAt;
+
+  @UI.lineItem: [ {
+    position: 80 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 80
+  } ]
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.lineItem: [ {
+    position: 100 ,
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 100
+  } ]
+  LastChangedAt; */
+}

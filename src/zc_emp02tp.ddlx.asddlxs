@@ -1,0 +1,173 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Employee Information', 
+    typeNamePlural: 'Employee Information', 
+    title: {
+      type: #STANDARD, 
+      label: 'Employee Information', 
+      value: 'EID'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'EID', 
+      direction: #DESC
+    } ], 
+    
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZC_Emp02TP with
+{
+  @UI.facet: [ {
+    id: 'idCollection', 
+    type: #COLLECTION, 
+    label: 'Employee Basic Details', 
+    position: 10 
+  }, 
+  {
+    id: 'idIdentification', 
+    parentId: 'idCollection', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 20 
+  }, 
+  {
+    id: 'idSkill', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Employee Skill Information', 
+    position: 30 , 
+    targetElement: '_Skill'
+  } ]
+  @UI.lineItem: [ {
+    label:'Employee ID',
+    position: 10 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label: 'Employee ID',
+    position: 10 
+  } ]
+  @UI.selectionField: [ { 
+//    label: 'Employee ID',
+    position: 10
+  } ]
+  EID;
+  
+  @UI.lineItem: [ {
+    label:'First Name',
+    position: 20 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label: 'First Name',
+    position: 20 
+  } ]
+  Fname;
+  
+  @UI.lineItem: [ {
+    label:'Last Name',
+    position: 30 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label: 'Last Name',
+    position: 30 
+  } ]
+  Lname;
+  
+  @UI.lineItem: [ {
+    label:'Gender',
+    position: 40 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Gender',
+    position: 40 
+  } ]
+  Gender;
+  
+  @UI.lineItem: [ {
+    label:'Department',
+    position: 50 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Department',
+    position: 50 
+  } ]
+  Dept;
+  
+  @UI.lineItem: [ {
+    label:'Status',
+    position: 60 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Status',
+    position: 60 
+  } ]
+  Status;
+  
+  @UI.lineItem: [ {
+    label:'Date of Joining',
+    position: 70 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Date of Joining',
+    position: 70 
+  } ]
+  Doj;
+  
+  @UI.lineItem: [ {
+    label:'Date of Leaving',
+    position: 80 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Date of Leaving',
+    position: 80 
+  } ]
+  Dol;
+  
+  @UI.lineItem: [ {
+    label:'Salary',
+    position: 90 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Salary',
+    position: 90 
+  } ]
+  Salary;
+  
+  @UI.lineItem: [ {
+    label:'Currency',
+    position: 100 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    label:'Currency',
+    position: 100 
+  } ]
+  Currency;
+  
+  @UI.hidden: true
+  LocalCreatedBy;
+  
+  @UI.hidden: true
+  LocalCreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}
